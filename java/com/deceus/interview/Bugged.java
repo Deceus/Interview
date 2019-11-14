@@ -6,8 +6,8 @@ public class BuggedMainClass {
    public static void main(String[] args) {
       String previousYear = "Actual 2018";
       String currentYear = "Enacted 2019";
-      String contextYear = "Analysis Recommendation 2020";
-      List<String> budgetSets = Arrays.asList("Request 2020", "OMB Submit 2020", "OMB Passback 2020");
+      String contextYear = "AR 2020";
+      List<String> budgetSets = Arrays.asList("Req 2020", "Sub 2020", "Pas 2020");
 
       BudgetRowClass row = new BudgetRowClass(previousYear, currentYear, contextYear, budgetSets);
       System.out.println(row);
@@ -70,14 +70,17 @@ public class BudgetRowClass {
       return header;
    }
 
-   private String buildRow(){
-      String rowValues = "|      " + pyValue + "     |      " + cyValue + "       | ";
+   private String buildRow() {
+      String rowValues = "|      " + pyValue + "     |      " + cyValue + "       |    ";
 
+      int i = 0;
       for (String bySet : bySetList) {
-         int i = 0;
          if (bySet.equals(context)) {
             rowValues += bySetValues.get(i) + " | ";
+         } else {
+            rowValues += bySetValues.get(i) + "     |    ";
          }
+         i++;
       }
 
       return rowValues;
