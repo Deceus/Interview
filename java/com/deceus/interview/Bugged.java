@@ -71,14 +71,16 @@ public class BudgetRowClass {
    }
 
    private String buildRow(){
-      String values = "|      " + pyValue + "     |      " + cyValue + "       | ";
+      String rowValues = "|      " + pyValue + "     |      " + cyValue + "       | ";
 
       for (String bySet : bySetList) {
          int i = 0;
          if (bySet.equals(context)) {
-            values += bySetValues.get(i) + " | ";
+            rowValues += bySetValues.get(i) + " | ";
          }
       }
+
+      return rowValues;
    }
 
 }
