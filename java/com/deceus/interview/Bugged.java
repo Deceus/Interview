@@ -55,12 +55,22 @@ public class BudgetRowClass {
    }
 
    public String toString() {
+      String header = buildHeader();
+      String row = buildRow();
+
+      return header + row;
+   }
+
+   private String buildHeader() {
       String header = "|" + py + " | " + cy + " | ";
       for (String bySet : bySetList) {
          header += bySet + " | ";
       }
       header += context + " | \n";
+      return header;
+   }
 
+   private String buildRow(){
       String values = "|      " + pyValue + "     |      " + cyValue + "       | ";
 
       for (String bySet : bySetList) {
@@ -68,10 +78,7 @@ public class BudgetRowClass {
          if (bySet.equals(context)) {
             values += bySetValues.get(i) + " | ";
          }
-
       }
-
-      return header + values;
    }
 
 }
